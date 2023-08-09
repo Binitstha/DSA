@@ -1,7 +1,5 @@
-
-    // {
-    //     printf("[%p | %d | %p]\n", temp, temp->data, temp->next);
-    //     temp = temp->next;
-    // } while (temp->next != head);
-    // printf("[%p | %d | %p]\n", temp, temp->data, temp->next);
-    // last = temp;
+>    [0   | | 100]  <- [first]
+// [temp]   ->   [100 | | 200]
+//               [200 | | 300]
+//               [300 | | 400]
+//          
