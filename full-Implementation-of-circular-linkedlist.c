@@ -16,13 +16,16 @@ struct node
     int data;
     struct node *next;
 } *head, *temp, *newnode, *last, *first;
+
 int enqueue(int x)
 {
     for (int i = 0; i < x; i++)
     {
         newnode = (struct node *)malloc(sizeof(struct node *));
+
         printf("Insert the element : \n");
         scanf("%d", &newnode->data);
+
         if (head == 0)
         {
             head = newnode;
@@ -45,16 +48,17 @@ int display()
         printf("List is empty\n");
     }
     printf("Head = %p\n", head);
+
     do
     {
         printf("[%p | %d | %p]\n", temp, temp->data, temp->next);
         temp = temp->next;
     } while (temp != last->next);
+
     printf("last = %p : %d\n", last->next, last->data);
 }
 int deleteAtBegining()
 {
-    // last = temp;
     printf("last = %p : %d\n", last->next, last->data);
     if (head == 0)
     {
@@ -68,6 +72,7 @@ int deleteAtBegining()
     }
     last->next = head;
     printf("last = %p : %d\n", last->next, last->data);
+
     temp = head;
     printf("head = %p\n", head);
     do
@@ -87,6 +92,7 @@ int deleteAtLast()
     }
     temp->next = head;
     free(last);
+
     temp = head;
     do
     {
@@ -100,11 +106,14 @@ int deleteAtLast()
 int insertAtLast()
 {
     newnode = (struct node *)malloc(sizeof(struct node *));
+
     printf("last = %p : %d\n", last->next, last->data);
     printf("insert the element at last : \n");
     scanf("%d", &newnode->data);
+
     last->next = newnode;
     newnode->next = head;
+
     temp = head;
     do
     {
@@ -117,12 +126,15 @@ int insertAtLast()
 int insertAtFirst()
 {
     newnode = (struct node *)malloc(sizeof(struct node *));
+
     first = head;
     printf("Enter the element at last :\n");
     scanf("%d",&newnode->data);
+
     newnode->next = first;
     last->next = newnode;
     head = newnode;
+    
     temp = head;
     printf(" head = [%p | %d | %p]\n",head ,head->data,head->next);
     do
@@ -141,7 +153,7 @@ int main()
     {
         if (ch != 1)
         {
-            printf("1:Insert data\t 2:Display\t 3:Delete at begininig\t 4:insert at first\t 5:delete at last\t 6:insert at last\n");
+            printf("1:Insert data\t 2:Display data \t 3:Insert at first\t 4:Insert at last\t 5:Delete at first\t 6:Delete of last\n");
         }
         printf("Enter the choice : \t 0 for exit\n");
         scanf("%d", &ch);
@@ -162,26 +174,26 @@ int main()
         }
         case 3:
         {
-            printf("after deletion at begining: \n");
-            deleteAtBegining();
+            printf("After insertion at first :\n");
+            insertAtFirst();
             break;
         }
         case 4:
         {
-            printf("After insertion at first :\n");
+            printf("After insertion at last :\n");
             insertAtLast();
             break;
         }
         case 5:
         {
-            printf("After deletion at last :\n");
-            deleteAtLast();
+            printf("after deletion at begining: \n");
+            deleteAtBegining();
             break;
         }
         case 6:
         {
-            printf("After insertion at first :\n");
-            insertAtFirst();
+            printf("After deletion at last :\n");
+            deleteAtLast();
             break;
         }
         case 0:

@@ -144,10 +144,10 @@ int main()
     int head = 0;
     do
     {
-        if (ch != 1)
-        {
+        // if (ch != 1)
+        // {
             printf("1:Enqueue\t 2:Dequeue\t 3:Insert at begining\t 4:Insert at last\t 5: Delete at begining\t 6:Delete at last\t 0:Exit\n ");
-        }
+        // }
         printf("Enter the choice : \n");
         scanf("%d", &ch);
 
