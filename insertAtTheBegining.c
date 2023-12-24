@@ -52,7 +52,7 @@ int dequeue()
     else{
         printf("dequeueed item is : %d\n",temp->data);
         temp = head;
-        while(temp->next == 0)
+        while(temp->next != 0)
         {
             printf("[%p | %d | %p]",temp,temp->data,temp->next);
             temp= temp->next;

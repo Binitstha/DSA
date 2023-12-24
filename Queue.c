@@ -1,86 +1,74 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 #define size 5
-int queue[size];
 int front = -1;
 int rear = -1;
-int enqueue(int a)
+int Queue[size];
+int Enqueue()
 {
-    if (front == -1 && rear == -1)
+    printf("Enter the element to insert in the Queue : \n");
+    for (int i = 0; i < size; i++)
     {
-        front = rear = 0;
-        queue[rear] = a;
-    }
-    else if (rear == size - 1)
-    {
-        printf("Queue is full\e");
-    }
-    else
-    {
+        scanf("%d", &Queue[i]);
+        front = 0;
         rear++;
-        queue[rear] = a;
     }
 }
-int dequeue()
+int Dequeue()
 {
-    if (front == -1 && rear == -1)
+    if (rear == -1 && front == -1)
     {
-        printf("Queue is empty\n");
+        printf("Queue underflow\n");
     }
     else if (rear == front)
     {
-        printf("Dequeued item is : [%d] \n", queue[front]);
+        printf("Dequeued item is %d\n", Queue[front]);
         rear = -1;
         front = -1;
     }
     else
     {
-        printf("Dequeued item is : [%d] \n", queue[front]);
+        printf("Dequeued item is %d\n", Queue[front]);
         front++;
     }
 }
-int display()
+int Display()
 {
-    if (front > rear)
+    if (rear == -1 && front == -1)
     {
-        printf("Queue is empty");
+        printf("Queue underflow\n");
     }
     else
     {
+        printf("Element of the queue : \n");
         for (int i = front; i <= rear; i++)
         {
-            printf("[%d] : [%d]\n", i, queue[i]);
-            // rear++;
+            printf("%d | %d\n", i, Queue[i]);
         }
     }
 }
 int main()
 {
-    int ch;
-    int x;
-    printf("1:Enqueue\t , 2:Dequeue\tt ,3:Display\n");
-    while (ch < 4)
+    int ch = 1;
+    while (ch < 5)
     {
         printf("Enter the choice : \n");
         scanf("%d", &ch);
         switch (ch)
         {
         case 1:
-        {
-            printf("Enter the element :");
-            scanf("%d", &x);
-            enqueue(x);
+            Enqueue();
             break;
-        }
         case 2:
-        {
-            dequeue();
+            Dequeue();
             break;
-        }
         case 3:
-        {
-            display();
+            Display();
             break;
-        }
+        case 4:
+            printf("Exiting.......\n");
+            exit(0);
         }
     }
 }
