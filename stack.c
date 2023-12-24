@@ -1,81 +1,75 @@
 #include <stdio.h>
-int stack[50], choice = 0, i, j, top = -1;
-int n;
-int push();
-int pop();
-int show();
-int main()
+#include <conio.h>
+#include<stdlib.h>
+#define size 5
+int a[size];
+int top = -1;
+int enqueue()
 {
-    printf("Enter the element of stack : \n ");
-    scanf("%d", &n);
-    while (choice != 5)
+    if (top == size)
     {
-        printf("Enter the choice : \n");
-        printf("1=push\n2=pop\n3=show\n4=exit\n");
-        scanf("%d", &choice);
-        switch (choice)
-        {
-        case 1:
-        {
-            push();
-            break;
-        }
-        case 2:
-        {
-            pop();
-            break;
-        }
-        case 3:
-        {
-            show();
-            break;
-        }
-        case 4:
-        {
-            printf("Exiting.........\n");
-            break;
-        }
-        default:
-            printf("Enter the valid choice : \n");
-            break;
-        };
-    }
-    return 0;
-}
-int push()
-{
-    int val;
-    if (top == n)
-    {
-        printf("stack overflow : \n");
+        printf("Stack overflow\n");
     }
     else
     {
-        printf("Enter the value : \n");
-        scanf("%d", &val);
-        top += 1;
-        stack[top] = val;
+        printf("Enter the element of the stack : \n");
+        for (int i = 0; i < size; i++)
+        {
+            scanf("%d", &a[i]);
+            top++;
+        }
     }
 }
-int pop()
+
+int dequeue()
 {
     if (top == -1)
     {
-        printf("stack underflow\n");
+        printf("Stack underflow\n");
     }
     else
     {
-        top -= 1;
+        printf("Dequeued item is %d\n", a[top]);
+        top--;
     }
 }
-int show()
+int display()
 {
-    for (i = 0; i < top; i++)
+    if (top == -1)
     {
-        printf("%d\n", stack[i]);
+        printf("Stack underflow\n");
     }
-    if (top = -1)
+    else
     {
-        printf("stack underflow : \n");
+        printf("Stack element are : \n");
+        for (int i = top; i >= 0; i--)
+        {
+            printf("%d | %d\n", i, a[i]);
+        }
+    }
+}
+int main()
+{
+    int ch = 1;
+    while (ch < 5)
+    {
+        printf("\n1.Enqueue\t2.Dequeue\t3.Display\t4.Exit\n");
+        printf("Enter the choice : \n");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+        case 1:
+            enqueue();
+            break;
+        case 2:
+            dequeue();
+            break;
+        case 3:
+            display();
+            break;
+        case 4:
+            printf("Exiting.....\n");
+            exit(0);
+        }
     }
 }
